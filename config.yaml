@@ -1,0 +1,53 @@
+# config.yaml - Configuration for Fractal Reflector V1
+
+# List of your defined fractal stacks (Uncomment and populate when ready)
+# fractal_stacks:
+#   - Quantum Choice Stack
+#   - Mindset / AGI Dialogue
+#   - Legacy Family Stack
+#   - Vitality + Mental Clarity
+#   - Quantum Vitality Stack
+#   - Compute Stack
+#   - Quantum Compute Farm
+#   - Fractal Wealth + Work Stack
+#   - Relationship Fractal Stack
+#   - Financial AGI Fractal
+#   - Execution Fractal
+#   - System Architecture Fractal
+#   - Data Fractal
+#   - AGI Execution Stack – Phase 1
+#   - Personal Optimization Stack
+
+data:
+  log_directory: "data/"        # Folder where daily CSV/JSON logs are placed
+  log_format: "CSV"             # Assumed format (can be changed)
+  log_date_format: "%Y-%m-%d"   # Example: How dates might be named (e.g., log_2025-04-03.csv) - TBD
+
+llm:
+  local_model: "llama3.1:8b"     # Default local model for reflection
+
+agents:
+  defaults:                     # Default safety/resource limits
+    timeout_seconds: 30
+    memory_limit_mb: 512
+  log_parser:
+    # Specific settings for log parser (e.g., required columns)
+  reflection_synthesizer:
+    llm_model_id: "llama3.1:8b" # Or reference llm.local_model
+    max_output_tokens: 512      # Limit generated text length
+    cooldown_seconds: 1         # Delay between LLM calls
+    history_days_for_context: 1 # How many past days Agent 1 should load for Agent 3 context (Start simple)
+  stack_decay_monitor:          # Placeholder for thresholds (Populate with confirmed stacks/days later)
+    enabled: false              # Disabled for V1 until stacks are consistently logged
+    # thresholds_days:
+      # Quantum Choice Stack: 7 # Example
+      # Mindset / AGI Dialogue: 3 # Example
+      # ... add all stacks and thresholds ...
+
+# Placeholder for other safety settings from your brainstorm
+safety_controls:
+    llm_token_limit: 2048 # Overall token limit per request?
+    # Add other limits (CPU, Network) here - implementation TBD in tools/safety_controls.py
+
+system:
+  logging_level: "INFO"
